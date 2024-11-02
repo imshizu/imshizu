@@ -9,7 +9,7 @@ const updateReadme = (newAge: number) => {
     const readmePath = path.join(__dirname, '../README.md');
     let readmeContent = fs.readFileSync(readmePath, 'utf8');
 
-    const ageRegex = /(\{age\})/;
+    const ageRegex = /\b\d+(?=-year-old)\b/;
     readmeContent = readmeContent.replace(ageRegex, `${newAge}`);
 
     fs.writeFileSync(readmePath, readmeContent, 'utf8');
